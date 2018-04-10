@@ -18,6 +18,12 @@ app.use(bodyParser.urlencoded({
 
 app.use('/public', express.static('public'));
 
+// Global vars
+app.use(function (req, res, next) {
+  res.locals.errors = null;
+  next();
+});
+
 // to connect to database
 MongoClient.connect('mongodb://zrbayoff:theroad12345@ds239359.mlab.com:39359/thecommentor', (err, database) => {
   if (err) return console.log(err);
@@ -36,7 +42,10 @@ app.post('/comments', [
 ], (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    console.log('there were errors');
+    res.redirect('/');
+    const errorObj = errors.mapped();
+    console.log(errorObj);
+    
   } else {
     db.collection('comments').save(req.body, (err, result) => {
       if (err) {
@@ -52,7 +61,8 @@ app.post('/comments', [
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html');
+  // res.sendFile(__dirname + '/index.html');
+  res.render('index');
 });
 
 // app.listen(port, () => {

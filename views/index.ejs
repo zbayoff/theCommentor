@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Commentor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/public/css/styles.css" />
+</head>
+
+<body>
+
+    <h1>The Commentor</h1>
+    <p>A simple app to leave comments on the web.</p>
+    <div>
+        <a href="#">Leave Comment</a>
+        <span>/</span>
+        <a href="#">Past Comments</a>
+    </div>
+    <div>
+        <form method="post" action="/comments">
+            <div>
+                <label>Name</label>
+                <input type="text" name="name">
+                <% if(errors != undefined) { %>
+                    <p>
+                        <%= errorObj.filter(error => { error.param == 'name' }) %>
+                    </p>
+                <% } %>
+
+            </div>
+            <div>
+                <label>Message</label>
+                <textarea type="text" name="message"></textarea>
+            </div>
+            <div>
+                <input type="submit" value="Leave Comment">
+            </div>
+        </form>
+    </div>
+    <div>
+
+    </div>
+
+
+</body>
+
+</html>
