@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>The Commentor | Comments</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link type="text/css" rel="stylesheet" href="/public/css/styles.css" />
+</head>
+
+<body>
+    <main>
+        <section>
+            <h1>The Commentor</h1>
+            <p>A simple app to leave comments on the web.</p>
+            <div class="group">
+                <a href="#">Leave Comment</a>
+                <span>/</span>
+                <a href="#">Past Comments</a>
+            </div>
+            <div>
+                <% if (success) { %>
+                    <h2 class="success-msg">
+                        <%= success %>
+                    </h2>
+                    <%}%>
+            </div>
+            <% for (let i = 0; i < comments.name.length; i += 1) { %>
+                <div class="comment-container"> 
+                    
+                    <p><strong><%=comments.dateAdded[i]%></strong></p><span>Posted By: <%=comments.name[i]%></span>
+                    <p>Message:</p>
+                    <p><%=comments.message[i]%></p>
+                </div>
+            <%}%>
+            
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

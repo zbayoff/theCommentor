@@ -9,5 +9,10 @@
         "**/node_modules/**",
         ".vscode/**",
         "**/other/**"
-    ]
+    ],
+    "liveServer.settings.proxy": {
+        "enable": true,
+        "baseUri": "/", 
+        "proxyUri": "http://localhost:9000" 
+    },
 }
