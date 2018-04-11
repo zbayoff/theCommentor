@@ -346,6 +346,8 @@ main {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
   width: 100%;
   max-width: 750px;
 }
@@ -354,16 +356,19 @@ main section {
   display: block;
 }
 
+main .comment-container .calendar {
+  width: 1rem;
+}
+
 .group {
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
   margin-bottom: 1rem;
 }
 
 .group a {
   text-decoration: none;
-}
-
-.group:hover {
-  text-decoration: underline;
 }
 
 .success-msg {

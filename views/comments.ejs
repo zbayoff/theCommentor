@@ -15,10 +15,10 @@
             <h1>The Commentor</h1>
             <p>A simple app to leave comments on the web.</p>
             <div class="group">
-                <a href="#">Leave Comment</a>
-                <span>/</span>
-                <a href="#">Past Comments</a>
-            </div>
+                    <button>
+                        <a href="/">Leave Comment</a>
+                    </button>
+                </div>
             <div>
                 <% if (success) { %>
                     <h2 class="success-msg">
@@ -26,16 +26,28 @@
                     </h2>
                     <%}%>
             </div>
-            <% for (let i = 0; i < comments.name.length; i += 1) { %>
-                <div class="comment-container"> 
-                    
-                    <p><strong><%=comments.dateAdded[i]%></strong></p><span>Posted By: <%=comments.name[i]%></span>
-                    <p>Message:</p>
-                    <p><%=comments.message[i]%></p>
-                </div>
-            <%}%>
-            
-            </div>
+            <% if (comments.name.length == 0) { %>
+                <p>No comments have been added.</p>
+                <%}%>
+                    <% for (let i = 0; i < comments.name.length; i += 1) { %>
+                        <div class="comment-container">
+
+                            <p><span><img class="calendar" src="public/img/calendar.png"></span>
+                                <strong>
+                                    <%=(comments.dateAdded[i]).toLocaleString()%>
+                                </strong>
+                            </p>
+                            <span>Posted By:
+                                <%=comments.name[i]%>
+                            </span>
+                            <p>Message:</p>
+                            <p>
+                                <%=comments.message[i]%>
+                            </p>
+                        </div>
+                        <%}%>
+
+                            </div>
         </section>
     </main>
 </body>
