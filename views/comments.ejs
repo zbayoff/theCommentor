@@ -13,12 +13,11 @@
     <main>
         <section>
             <h1>The Commentor</h1>
-            <p>A simple app to leave comments on the web.</p>
             <div class="group">
-                    <button>
-                        <a href="/">Leave Comment</a>
-                    </button>
-                </div>
+                <button>
+                    <a href="/">Leave Comment</a>
+                </button>
+            </div>
             <div>
                 <% if (success) { %>
                     <h2 class="success-msg">
@@ -29,25 +28,20 @@
             <% if (comments.name.length == 0) { %>
                 <p>No comments have been added.</p>
                 <%}%>
+                <h2>Comments</h2>
                     <% for (let i = 0; i < comments.name.length; i += 1) { %>
                         <div class="comment-container">
-
-                            <p><span><img class="calendar" src="public/img/calendar.png"></span>
-                                <strong>
-                                    <%=(comments.dateAdded[i]).toLocaleString()%>
-                                </strong>
+                            
+                            <p><span>
+                                    <img class="logo" src="public/img/calendar.png">
+                                </span>
+                                <strong><%=(comments.dateAdded[i]).toString().substr(0,21)%></strong><span class="avatar"><img class="logo" src="public/img/avatar.png"><%=comments.name[i]%></span>
                             </p>
-                            <span>Posted By:
-                                <%=comments.name[i]%>
-                            </span>
-                            <p>Message:</p>
-                            <p>
-                                <%=comments.message[i]%>
-                            </p>
+                            <p class="message"><%=comments.message[i]%></p>
+                            <button class="delete">Delete</button>
                         </div>
                         <%}%>
-
-                            </div>
+                    </div>
         </section>
     </main>
 </body>

@@ -354,16 +354,38 @@ main {
 
 main section {
   display: block;
+  width: 100%;
 }
 
-main .comment-container .calendar {
+main .comment-container {
+  border-bottom: 2px solid grey;
+}
+
+main .comment-container .logo {
   width: 1rem;
+}
+
+main .comment-container .avatar {
+  font-weight: 600;
+}
+
+main .comment-container .avatar:before {
+  content: " ";
+  display: inline-block;
+  width: 30px;
+}
+
+main .comment-container .message {
+  width: 100%;
+}
+
+main .comment-container .delete {
+  margin-bottom: 1rem;
 }
 
 .group {
   display: flex;
-  justify-content: space-around;
-  padding: 1rem;
+  justify-content: flex-start;
   margin-bottom: 1rem;
 }
 

@@ -30,16 +30,16 @@ app.use(function (req, res, next) {
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
-
 MongoClient.connect('mongodb://zrbayoff:theroad12345@ds239359.mlab.com:39359/thecommentor', (err, database) => {
   if (err) return console.log(err);
   db = database;
   app.listen(port, () => {
     console.log(`Listening on port ${port}!`);
   });
+});
+
+app.get('/', (req, res) => {
+  res.render('index');
 });
 
 app.get('/comments', (req, res) => {
@@ -65,7 +65,6 @@ app.get('/comments', (req, res) => {
         }, {
           dateAdded: dateAdded
         }];
-
         res.render('comments', {
           comments: {
             name: name,
@@ -78,12 +77,8 @@ app.get('/comments', (req, res) => {
 });
 
 app.post('/', [
-  check('name', 'Please enter your name.').isLength({
-    min: 1
-  }),
-  check('message', 'Please write a message.').isLength({
-    min: 1
-  })
+  check('name', 'Please enter your name.').isLength({min: 1}),
+  check('message', 'Please write a message.').isLength({min: 1})
 ], (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -103,4 +98,9 @@ app.post('/', [
       }
     });
   }
+});
+
+app.delete('/comments/:id', (req,res)=>{
+  console.log(req.params.id);
+  res.send({type: 'Delete'});
 });

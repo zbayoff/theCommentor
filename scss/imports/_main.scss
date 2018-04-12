@@ -22,19 +22,34 @@ main {
     max-width: 750px;
     section {
         display: block;
+        width: 100%;
     }
     .comment-container {
-        .calendar {
+        border-bottom: 2px solid grey;
+        .logo {
             width: 1rem;
+        }
+        .avatar {
+            font-weight: 600;
+        }
+        .avatar:before{
+            content: " ";
+            display: inline-block;
+            width: 30px;
+        }
+        .message {
+            width: 100%;
+        }
+        .delete {
+            margin-bottom: 1rem;
         }
     }
 }
 
+
 .group {
     display: flex;
-    justify-content: space-around;
-    padding: 1rem;
-
+    justify-content: flex-start;
     margin-bottom: 1rem;
     a {
         text-decoration: none;
