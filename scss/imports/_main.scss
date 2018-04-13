@@ -1,6 +1,7 @@
 * {
     font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
+    letter-spacing: 0.5px;
 }
 
 div {
@@ -16,36 +17,75 @@ main {
     align-items: center;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 4rem;
     padding-left: 1rem;
     padding-right: 1rem;
     width: 100%;
     max-width: 750px;
+    button {
+        cursor: pointer;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        border-radius: 5px;
+        &:hover {
+            animation: bulge .5s forwards;
+        }
+        a {
+            display: inline-block;
+            padding: .5rem;
+        }
+    }
+    .comments-wrapper {
+        border-top: 2px dotted grey;
+    }
     section {
         display: block;
         width: 100%;
     }
     .comment-container {
-        border-bottom: 2px solid grey;
-        .logo {
-            width: 1rem;
-        }
-        .avatar {
-            font-weight: 600;
-        }
-        .avatar:before{
-            content: " ";
-            display: inline-block;
-            width: 30px;
+        border-bottom: 2px dotted grey;
+        .comment-header {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            .logo {
+                width: 1rem;
+                margin-right: 8px;
+            }
+            .date {
+                font-weight: 600;
+                margin-right: 2rem;
+            }
+            .avatar {
+                font-weight: 600;
+                
+            }
+            .delete-icon {
+                font-size: 1.2rem;
+                position: absolute;
+                right: 20px;
+                top: 0;
+                bottom: 0;
+                cursor: pointer;
+                transition: transform .2s;
+                &.delete {
+                    padding: .5rem;
+                }
+                &:hover {
+                    transform: scale(1.5);
+                }
+            }
         }
         .message {
             width: 100%;
+            background-color: lightgray;
+            padding: 1rem;
+            border-radius: 5px;
+            white-space: pre-wrap;
         }
-        .delete {
-            margin-bottom: 1rem;
-        }
+        
     }
 }
-
 
 .group {
     display: flex;
@@ -90,12 +130,29 @@ form {
         }
         .form-submit {
             display: block;
-            height: 2rem;
-            background-color: lightblue;
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: #33CAFF;
+            border-color: #33CAFF;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            &:hover {
+                animation: bulge .5s forwards;
+            }
         }
         .input-error {
             color: red;
             font-size: 0.8rem;
         }
+    }
+}
+
+@keyframes bulge {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.1);
     }
 }

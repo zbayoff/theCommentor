@@ -333,6 +333,7 @@ template {
 * {
   font-family: Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  letter-spacing: 0.5px;
 }
 
 div a {
@@ -346,10 +347,31 @@ main {
   align-items: center;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 4rem;
   padding-left: 1rem;
   padding-right: 1rem;
   width: 100%;
   max-width: 750px;
+}
+
+main button {
+  cursor: pointer;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  border-radius: 5px;
+}
+
+main button:hover {
+  animation: bulge .5s forwards;
+}
+
+main button a {
+  display: inline-block;
+  padding: .5rem;
+}
+
+main .comments-wrapper {
+  border-top: 2px dotted grey;
 }
 
 main section {
@@ -358,29 +380,53 @@ main section {
 }
 
 main .comment-container {
-  border-bottom: 2px solid grey;
+  border-bottom: 2px dotted grey;
 }
 
-main .comment-container .logo {
+main .comment-container .comment-header {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+main .comment-container .comment-header .logo {
   width: 1rem;
+  margin-right: 8px;
 }
 
-main .comment-container .avatar {
+main .comment-container .comment-header .date {
+  font-weight: 600;
+  margin-right: 2rem;
+}
+
+main .comment-container .comment-header .avatar {
   font-weight: 600;
 }
 
-main .comment-container .avatar:before {
-  content: " ";
-  display: inline-block;
-  width: 30px;
+main .comment-container .comment-header .delete-icon {
+  font-size: 1.2rem;
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+main .comment-container .comment-header .delete-icon.delete {
+  padding: .5rem;
+}
+
+main .comment-container .comment-header .delete-icon:hover {
+  transform: scale(1.5);
 }
 
 main .comment-container .message {
   width: 100%;
-}
-
-main .comment-container .delete {
-  margin-bottom: 1rem;
+  background-color: lightgray;
+  padding: 1rem;
+  border-radius: 5px;
+  white-space: pre-wrap;
 }
 
 .group {
@@ -431,12 +477,30 @@ form .form-group .form-text-area {
 
 form .form-group .form-submit {
   display: block;
-  height: 2rem;
-  background-color: lightblue;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #33CAFF;
+  border-color: #33CAFF;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form .form-group .form-submit:hover {
+  animation: bulge .5s forwards;
 }
 
 form .form-group .input-error {
   color: red;
   font-size: 0.8rem;
+}
+
+@keyframes bulge {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
 }
 /*# sourceMappingURL=styles.css.map */
